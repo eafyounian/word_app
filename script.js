@@ -115,20 +115,46 @@ function selectRandomCards(data, count) {
     return shuffled.slice(0, count);
 }
 
+// function renderCards(cards) {
+//     const container = document.querySelector('.grid-container');
+//     // console.log("Rendering cards, clearing container first");
+//     container.innerHTML = '';
+//     cards.forEach(card => {
+//         const cardElement = document.createElement('div');
+//         cardElement.classList.add('card');
+//         cardElement.textContent = card.abbreviation;
+//         cardElement.dataset.meaning = card.meaning;
+//         cardElement.addEventListener('click', handleCardClick);
+//         container.appendChild(cardElement);
+//     });
+//     // console.log("Grid container after rendering:", container.innerHTML);
+// }
+
 function renderCards(cards) {
     const container = document.querySelector('.grid-container');
-    // console.log("Rendering cards, clearing container first");
     container.innerHTML = '';
     cards.forEach(card => {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
-        cardElement.textContent = card.abbreviation;
+        const spanElement = document.createElement('span');
+        spanElement.textContent = card.abbreviation;
+        cardElement.appendChild(spanElement);
         cardElement.dataset.meaning = card.meaning;
         cardElement.addEventListener('click', handleCardClick);
         container.appendChild(cardElement);
     });
-    // console.log("Grid container after rendering:", container.innerHTML);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 function handleCardClick(event) {
     const clickedCard = event.currentTarget;
